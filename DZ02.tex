@@ -43,6 +43,8 @@
 	\item (5) Пусть $A\subset \mathbb R$ --- счетное множество. Найдите $(\mathbb R\smallsetminus A)'$.\\
 Ответ: $\mathbb R$. Предположим противное, т.е. $\exists x \in \mathbb R, \mathcal{E} > 0$ такие, что $\forall y \in (\mathbb R\smallsetminus A)$ лежит вне проколотой $\mathcal{E}$ окрестности $x$. Тогда точки, которые лежали внутри этой окрестности принадлежат $A$, а это значит, что у $A$ есть несчетное подмножество, чего не может быть. 
 	\item (7) Докажите, что $A''\subset A'$ для всякого $A\subset \mathbb R$.
+    Решение:\\ 
+    Нужно доказать, что любая точка $A''$ является предельной точкой $A$. Рассмотрим случайный $x \in A''$. По условию: $\forall \mathcal{E} > 0 \exists y \in A': 0 < |x - y| < \mathcal{E}$. Также мы знаем, что для $y$ $\forall \mathcal{E'} > 0$ $\exists a \in A: 0 < |y - a|<\mathcal{E'}$. Тогда возьмем $\mathcal{E'} = \frac{\mathcal{E} - |x-y|}{2}$ и в этом случае $a$ будет лежать и в $\mathcal{E}$ окрестности $x$. А значит $\forall \mathcal{E} > 0$ $\exists a \in A : 0 < |x-a| < \mathcal{E}$.
 \end{enumerate}
 
 

@@ -70,39 +70,47 @@
     
     \item Точка называется изолированной, если существует окрестность, в которой находится только она сама. Множество называется дискретным, если все его точки изолированные. 
 	\begin{enumerate}
-		\item (7) Докажите, что дискретное подмножество плоскости всегда не более чем счетно.
+		\item (7) Докажите, что дискретное подмножество плоскости всегда не более чем счетно.\\
+		Решение: если подмножество дискретно, то у каждой точки из него есть такая окрестность, в которой нет никаких точек этого множества. Тогда возьмем любую рациональную точку из этой окрестности и таким образом сделаем инъекцию в $\mathbb Q^2$, а значит и в $\mathbb N$. 
 		\item (10) Постройте пример дискретного множества $A\subset \mathbb R^2$, такого, что $A'$ континуально.
 		\item (15) Постройте пример дискретного множества $A\subset\mathbb R$ такого, что $A'$ континуально.
 	\end{enumerate}
 	
 	\item Найдите $A'$, если
     \begin{enumerate}
-        \item (8) $A = \{\left(\frac{n}{\sqrt{n^2+m^2}},\frac{m}{\sqrt{n^2+m^2}}\right)\in \mathbb R^2\ \mid\ n,m\in \mathbb N\}$
-        \item (8) $A = \{(x,x^n)\in \mathbb R^2\ \mid\ n\in \mathbb N,\ x\in \mathbb R\}$
+        \item (8) $A = \{\left(\frac{n}{\sqrt{n^2+m^2}},\frac{m}{\sqrt{n^2+m^2}}\right)\in \mathbb R^2\ \mid\ n,m\in \mathbb N\}$\\
+        Решение: $A = \{\left(\frac{1}{\sqrt{1+m^2}},\frac{1}{\sqrt{n^2+1}}\right)\in \mathbb R^2\ \mid\ n,m\in \mathbb N\}$. Если зафиксируем $m$, то $\left(\frac{1}{\sqrt{1+m^2}},\frac{1}{\sqrt{n^2+1}}\right)$ стремится к $\left(\frac{1}{\sqrt{1+m^2}},0\right)$. $A$ является объединением таких последовательностей для всех $m \in \mathbb N$. Так как координаты точки симметричны, то $A'$ -- объединение $\{\left(0,\frac{1}{\sqrt{n^2+1}}\right)\in \mathbb R^2\ \mid\ n \in \mathbb N\}$ и $\{\left(\frac{1}{\sqrt{n^2+1}},0\right)\in \mathbb R^2\ \mid\ n \in \mathbb N\}$. Потому что такие предельные точки у $A$ точно есть, а вне их окрестностей лежит только конечное число элементов.
+        \item (8) $A = \{(x,x^n)\in \mathbb R^2\ \mid\ n\in \mathbb N,\ x\in \mathbb R\}$\\
+        Решение: $A$ -- объединение графиков функций $f(x) = x^n$. Так как $x \in \mathbb R$. Любая точка такого графика является предельной для $A$. ($x^n$ непрерывна). А вне этих графиков в $A$ нет точек, а значит и предельных тоже нет. Тогда $A' = A$.  
     \end{enumerate}
 	
-	\item (5) Пусть $A\subset\mathbb R$. Докажите, что существует такая последовательность $a_n\in A$, что $\lim\limits_{n\to +\infty} a_n = \sup A$.
-	
+	\item (5) Пусть $A\subset\mathbb R$. Докажите, что существует такая последовательность $a_n\in A$, что $\lim\limits_{n\to +\infty} a_n = \sup A$.\\
+	Решение: Если $\sup A$ лежит в $A$, то $a_n = \sup A$. Если не лежит, то $\forall \eps > 0\ \exists\ a\in A:|\sup A - a| < \eps$. Тогда возьмем такую последовательность $a_n = a$, где $|a - \sup A| < \frac{1}{n}$. Тогда с какого-то $n$ все $a_n$ будут попадать в $\eps$-окрестность $\sup A$. 
     \item Предъявите какую-нибудь функцию $N = N(\eps)$, для которой выполняется
     \[
         \forall \eps>0\ \forall n> N(\eps)\ |x_n-\lim\limits_{n\to+\infty} x_n|\leq \eps,
     \]
     если
-    \begin{multicols}{2}
     \begin{enumerate}
-        \item (4) $x_n = \frac{n}{2^{\sqrt{n}}}$
-        \item (4) $x_n = n^{1/n}$
-        \item (4) $x_n = \sqrt[3]{n^3 + n^2} - \sqrt[3]{n^3 - n^2}$
+        \item (4) $x_n = \frac{n}{2^{\sqrt{n}}}$\\
+        Решение: начиная с некоторого $n:\ n < 2^{\frac{\sqrt{n}}{2}}$. Тогда $\frac{n}{2^{\sqrt{n}}} < \frac{2^{\frac{\sqrt{n}}{2}}}{2^{\sqrt{n}}} = \frac{1}{2^{\frac{\sqrt{n}}{2}}}$ начиная с какого-то $n$. $2^{\frac{-\sqrt{n}}{2}} < \eps \Leftrightarrow \frac{-\sqrt{n}}{2} < \log_2\eps \Leftrightarrow \sqrt{n} > -2\log_2\eps$. $N(\eps) = \left \lceil{4\log^2_2\frac{1}{\eps}}\right \rceil + 1$ 
+        \item (4) $x_n = n^{1/n}$\\
+        Решение: предел равен 1. (Это докажется, если найду $N(\eps)$). $n^{\frac{1}{n}} > 1$, модуль раскрывается положительно. $n < (1 + \eps)^n, (1 + \eps)^n > 1 + n\eps,\ n < 1 + n\eps \Leftrightarrow n(1-\eps) < 1$. Если $\eps < 1$, то $N(\eps) = $ 
+        \item (4) $x_n = \sqrt[3]{n^3 + n^2} - \sqrt[3]{n^3 - n^2}$\\
+        Решение: предел равен $\frac{1}{3}$. $|\sqrt[3]{n^3 + n^2} - \sqrt[3]{n^3 - n^2} - \frac{1}{3}| < \eps \Leftrightarrow \frac{n^2}{(\sqrt[3]{n^3 + n^2})^2}$
         \item (4) $x_n = \frac{(n-1)(n-2)\cdot\dots\cdot (n-10)}{(n+1)(n+2)\cdot\dots\cdot(n+10)}$
     \end{enumerate}
-    \end{multicols}
-	
+    
 	\item При каких из нижеперечисленных условий числовая последовательность $x_n$ сходится?
 	\begin{enumerate}
-	    \item (3) $\exists a\in \mathbb R:\ \forall N>0\ \exists \eps>0:\ \forall n\geq\eps\ |x_n - a|<N$
-	    \item (3) $\forall \eps\in \mathbb R\ \exists N:\ \forall n>N\ \eps x_n < 1$
-	    \item (3) $\forall \eps>0\ \exists N:\ \forall n>N\ \left|\frac{x_1+x_2+\dots + x_n}{n}\right|\leq \eps$
-	    \item (3) $\forall \eps>0\ \exists N:\ \forall n>N\ x_n^2<\frac{1}{1+\eps}$
+	    \item (3) $\exists a\in \mathbb R:\ \forall N>0\ \exists \eps>0:\ \forall n\geq\eps\ |x_n - a|<N$\\
+        Решение: Если поменять $N$ и $\eps$, то получится определение предела. Сходится.
+	    \item (3) $\forall \eps\in \mathbb R\ \exists N:\ \forall n>N\ \eps x_n < 1$\\
+	    Решение: Если $\eps > 0$, поделим на $\eps$ и получим $x_n < \frac{1}{\eps}$. При положительных $x_n$ и больших $\eps$ это дает нам стремление к нулю. Если $\eps < 0$, то тоже поделим. $x_n > \frac{1}{\eps}$. И это дает стремление к нулю для отрицательных $x_n$ и большого по модулю $\eps$. Т.е. в итоге $x_n$ стремится к нулю.
+	    \item (3) $\forall \eps>0\ \exists N:\ \forall n>N\ \left|\frac{x_1+x_2+\dots + x_n}{n}\right|\leq \eps$\\
+	    Решение: $x_n = 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0 \dots$ модуль среднего арифметического стремится к нулю, но сама она не сходится.
+	    \item (3) $\forall \eps>0\ \exists N:\ \forall n>N\ x_n^2<\frac{1}{1+\eps}$\\
+	    Решение: $\eps' = \frac{1}{1+\eps}$. $x_n^2 < \eps' \Leftrightarrow |x_n| < \sqrt{\eps'} \Rightarrow x_n$ сходится к 0, так как $\sqrt{\eps'}$ может быть любым положительным числом.
 	    \item (3) $\forall\eps>0\ \exists N>0:\ \forall n>N\ 0<x_n^n\leq \frac{\eps}{n}$
 	    \item (3) $\exists N:\ \forall n>0\ \frac{1}{n}\leq (x_n - 1)^n \leq n$
 	\end{enumerate}

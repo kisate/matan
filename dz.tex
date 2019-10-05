@@ -1,0 +1,138 @@
+\documentclass[a4paper]{article}
+
+
+
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage[matrix,arrow,curve]{xy}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\usepackage{multicol}
+\setlength{\columnsep}{0.5cm}
+
+\usepackage{enumitem}
+%\renewcommand{\labelenumii}{\arabic{enumii}.}
+
+\usepackage{import}
+
+
+\newtheorem*{rem}{Remark}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+
+\def\Im{\mathrm{Im}\,}
+\def\eps{\varepsilon}
+\def\Int{\mathrm{Int}}
+\def\Cl{\mathrm{Cl}}
+
+\def\sh{\mathrm{sh}}
+\def\ch{\mathrm{ch}}
+\def\th{\mathrm{th}}
+
+\def\arcsh{\mathrm{arcsh}}
+\def\arcch{\mathrm{arcch}}
+\def\arcth{\mathrm{arcth}}
+
+\def\vphi{\varphi}
+
+\def\pr{\partial}
+
+
+\begin{document}
+
+\newcommand\HeaderDZ[5]{
+\begin{center}
+		\textbf{Домашнее задание #3, #2. Дедлайн #4, #5.}\\
+		Группа #1.Б10-пу.\\
+\end{center}
+\vspace{-\baselineskip}
+\bigskip
+\bigskip
+}
+
+
+
+\renewcommand{\labelenumii}{\arabic{enumii})}
+\renewcommand{\labelenumiii}{\roman{enumiii})}
+
+\HeaderDZ{19}{27.09.19}{3}{08.10.19}{14:00}
+
+\begin{enumerate}
+    \item (5) Приведите пример $A, B\subset \mathbb R$ таких, что $A' = B' = \varnothing$, но $(A + B)'\neq \varnothing$, где
+    \[
+        A+B = \{a+b\ \mid\ a\in A,\ b\in B\}
+    \]
+    
+    \item Точка называется изолированной, если существует окрестность, в которой находится только она сама. Множество называется дискретным, если все его точки изолированные. 
+	\begin{enumerate}
+		\item (7) Докажите, что дискретное подмножество плоскости всегда не более чем счетно.
+		\item (10) Постройте пример дискретного множества $A\subset \mathbb R^2$, такого, что $A'$ континуально.
+		\item (15) Постройте пример дискретного множества $A\subset\mathbb R$ такого, что $A'$ континуально.
+	\end{enumerate}
+	
+	\item Найдите $A'$, если
+    \begin{enumerate}
+        \item (8) $A = \{\left(\frac{n}{\sqrt{n^2+m^2}},\frac{m}{\sqrt{n^2+m^2}}\right)\in \mathbb R^2\ \mid\ n,m\in \mathbb N\}$
+        \item (8) $A = \{(x,x^n)\in \mathbb R^2\ \mid\ n\in \mathbb N,\ x\in \mathbb R\}$
+    \end{enumerate}
+	
+	\item (5) Пусть $A\subset\mathbb R$. Докажите, что существует такая последовательность $a_n\in A$, что $\lim\limits_{n\to +\infty} a_n = \sup A$.
+	
+    \item Предъявите какую-нибудь функцию $N = N(\eps)$, для которой выполняется
+    \[
+        \forall \eps>0\ \forall n> N(\eps)\ |x_n-\lim\limits_{n\to+\infty} x_n|\leq \eps,
+    \]
+    если
+    \begin{multicols}{2}
+    \begin{enumerate}
+        \item (4) $x_n = \frac{n}{2^{\sqrt{n}}}$
+        \item (4) $x_n = n^{1/n}$
+        \item (4) $x_n = \sqrt[3]{n^3 + n^2} - \sqrt[3]{n^3 - n^2}$
+        \item (4) $x_n = \frac{(n-1)(n-2)\cdot\dots\cdot (n-10)}{(n+1)(n+2)\cdot\dots\cdot(n+10)}$
+    \end{enumerate}
+    \end{multicols}
+	
+	\item При каких из нижеперечисленных условий числовая последовательность $x_n$ сходится?
+	\begin{enumerate}
+	    \item (3) $\exists a\in \mathbb R:\ \forall N>0\ \exists \eps>0:\ \forall n\geq\eps\ |x_n - a|<N$
+	    \item (3) $\forall \eps\in \mathbb R\ \exists N:\ \forall n>N\ \eps x_n < 1$
+	    \item (3) $\forall \eps>0\ \exists N:\ \forall n>N\ \left|\frac{x_1+x_2+\dots + x_n}{n}\right|\leq \eps$
+	    \item (3) $\forall \eps>0\ \exists N:\ \forall n>N\ x_n^2<\frac{1}{1+\eps}$
+	    \item (3) $\forall\eps>0\ \exists N>0:\ \forall n>N\ 0<x_n^n\leq \frac{\eps}{n}$
+	    \item (3) $\exists N:\ \forall n>0\ \frac{1}{n}\leq (x_n - 1)^n \leq n$
+	\end{enumerate}
+    
+    \item Докажите, что последовательность $x_n$ сходится, и вычислите ее предел, если
+    \begin{enumerate}
+        \item (7) $x_1=1,\quad x_{n+1}=\frac{x_n + 1}{x_n + 2}$
+        \item (10) $x_1 = 2,\ x_2 = 1,\quad x_{n+2} = \sqrt[3]{x_{n+1}^2x_n}$\\
+        Решение:\\
+        $\frac{x_{n+3}}{x_{n+2}}=\frac{\sqrt[3]{x_{n+2}^2x_{n+1}}}{x_{n+2}}=\sqrt[3]{\frac{x_{n+1}}{x_{n+2}}} \Rightarrow \frac{x_{n+3}}{x_{n+2}} = \sqrt[9]{\frac{x_{n+1}}{x_n}} \Rightarrow \frac{x_{n+4}}{x_{n+3}} = \sqrt[9]{\frac{x_{n+2}}{x_{n+1}}} \Rightarrow \frac{x_{n+4}}{x_{n+2}} = \sqrt[9]{\frac{x_{n+2}}{x_{n}}}$\\
+        $d = \frac{x_{n+2}}{x_{n}} \Rightarrow x_{2n+1} = d^{\sum_{i=0}^n\frac{1}{9^n}}x_1$
+    \end{enumerate}
+    
+    \item (10) При каких $x_1\in\mathbb{R}$ последовательность, заданная рекуррентно $x_{n+1}=x_n(2-x_n)$, $n\geqslant1$, сходится? Если сходится, найдите предел.
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -93,7 +93,7 @@
     если
     \begin{enumerate}
         \item (4) $x_n = \frac{n}{2^{\sqrt{n}}}$\\
-        Решение: начиная с некоторого $n:\ n < 2^{\frac{\sqrt{n}}{2}}$. Тогда $\frac{n}{2^{\sqrt{n}}} < \frac{2^{\frac{\sqrt{n}}{2}}}{2^{\sqrt{n}}} = \frac{1}{2^{\frac{\sqrt{n}}{2}}}$ начиная с какого-то $n$. $2^{\frac{-\sqrt{n}}{2}} < \eps \Leftrightarrow \frac{-\sqrt{n}}{2} < \log_2\eps \Leftrightarrow \sqrt{n} > -2\log_2\eps$. $N(\eps) = \left \lceil{4\log^2_2\frac{1}{\eps}}\right \rceil + 1$ 
+        Решение: начиная с некоторого $n:\ n < 2^{\frac{\sqrt{n}}{2}}$. Тогда $\frac{n}{2^{\sqrt{n}}} < \frac{2^{\frac{\sqrt{n}}{2}}}{2^{\sqrt{n}}} = \frac{1}{2^{\frac{\sqrt{n}}{2}}}$ начиная с какого-то $n$. $2^{\frac{-\sqrt{n}}{2}} < \eps \Leftrightarrow \frac{-\sqrt{n}}{2} < \log_2\eps \Leftrightarrow \sqrt{n} > -2\log_2\eps$. $N(\eps) = \left \lceil{4\log^2_2\frac{1}{\eps}}\right \rceil + 1$. А чтобы $N$ было достаточно большим, пускай $N(\eps) = \max(10000,\ \left \lceil{4\log^2_2\frac{1}{\eps}}\right \rceil + 1)$
         \item (4) $x_n = n^{1/n}$\\
         Решение: предел равен 1. (Это докажется, если найду $N(\eps)$). $n^{\frac{1}{n}} > 1$, модуль раскрывается положительно. $n < (1 + \eps)^n, (1 + \eps)^n > 1 + n\eps,\ n < 1 + n\eps \Leftrightarrow n(1-\eps) < 1$. Если $\eps < 1$, то $N(\eps) = $ 
         \item (4) $x_n = \sqrt[3]{n^3 + n^2} - \sqrt[3]{n^3 - n^2}$\\

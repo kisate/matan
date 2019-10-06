@@ -95,16 +95,26 @@
         \item (4) $x_n = \frac{n}{2^{\sqrt{n}}}$\\
         Решение: начиная с некоторого $n:\ n < 2^{\frac{\sqrt{n}}{2}}$. Тогда $\frac{n}{2^{\sqrt{n}}} < \frac{2^{\frac{\sqrt{n}}{2}}}{2^{\sqrt{n}}} = \frac{1}{2^{\frac{\sqrt{n}}{2}}}$ начиная с какого-то $n$. $2^{\frac{-\sqrt{n}}{2}} < \eps \Leftrightarrow \frac{-\sqrt{n}}{2} < \log_2\eps \Leftrightarrow \sqrt{n} > -2\log_2\eps$. $N(\eps) = \left \lceil{4\log^2_2\frac{1}{\eps}}\right \rceil + 1$. А чтобы $N$ было достаточно большим, пускай $N(\eps) = \max(10000,\ \left \lceil{4\log^2_2\frac{1}{\eps}}\right \rceil + 1)$
         \item (4) $x_n = n^{1/n}$\\
-        Решение: предел равен 1. (Это докажется, если найду $N(\eps)$). $n^{\frac{1}{n}} > 1$, модуль раскрывается положительно. $n < (1 + \eps)^n, (1 + \eps)^n > 1 + n\eps,\ n < 1 + n\eps \Leftrightarrow n(1-\eps) < 1$. Если $\eps < 1$, то $N(\eps) = $ 
+        Решение: предел равен 1. (Это докажется, если найду $N(\eps)$).\\ 
+        $n^{\frac{1}{n}} > 1$, модуль раскрывается положительно.\\
+        $n < (1 + \eps)^n, (1 + \eps)^n > 1 + n\eps + \frac{n(n-1)}{2}\eps^2 > \frac{n}{2}\eps + \frac{n^2}{2}\eps^2$\\
+        $\frac{n}{2}\eps + \frac{n^2}{2}\eps^2 > n \Leftrightarrow \frac{n^2}{2}\eps^2 > n(1 - \frac{\eps}{2}) \Leftrightarrow n > \frac{2-\eps}{\eps^2}$\\
+        Тогда $N(\eps) = \max(10, \frac{2 - \eps}{\eps^2})$. (10 для больших $\eps$). 
         \item (4) $x_n = \sqrt[3]{n^3 + n^2} - \sqrt[3]{n^3 - n^2}$\\
-        Решение: предел равен $\frac{1}{3}$. $|\sqrt[3]{n^3 + n^2} - \sqrt[3]{n^3 - n^2} - \frac{1}{3}| < \eps \Leftrightarrow |\frac{2n^2}{(\sqrt[3]{n^3 + n^2})^2 + \sqrt[3]{n^6 - n^4} + (\sqrt[3]{n^3 - n^2})^2} - \frac{2}{3}| < \eps \Leftrightarrow |\frac{2}{\sqrt[3]{1 + \frac{2}{n} - \frac{1}{n^2}} + \sqrt[3]{1 - \frac{1}{n^2}} + \sqrt[3]{1 - \frac{2}{n} - \frac{1}{n^2}}} - \frac{2}{3}| < \eps \Leftrightarrow 2|\frac{1 - \sqrt[3]{1 + \frac{2}{n} - \frac{1}{n^2}} + 1 - \sqrt[3]{1 - \frac{1}{n^2}} + 1 - \sqrt[3]{1 - \frac{2}{n} - \frac{1}{n^2}}}{3(\sqrt[3]{1 + \frac{2}{n} - \frac{1}{n^2}} + \sqrt[3]{1 - \frac{1}{n^2}} + \sqrt[3]{1 - \frac{2}{n} - \frac{1}{n^2}})}| < \eps$.
+        Решение: предел равен $\frac{2}{3}$. $|\sqrt[3]{n^3 + n^2} - \sqrt[3]{n^3 - n^2} - \frac{2}{3}| < \eps \Leftrightarrow |\frac{2n^2}{(\sqrt[3]{n^3 + n^2})^2 + \sqrt[3]{n^6 - n^4} + (\sqrt[3]{n^3 - n^2})^2} - \frac{2}{3}| < \eps \Leftrightarrow |\frac{2}{\sqrt[3]{1 + \frac{2}{n} - \frac{1}{n^2}} + \sqrt[3]{1 - \frac{1}{n^2}} + \sqrt[3]{1 - \frac{2}{n} - \frac{1}{n^2}}} - \frac{2}{3}| < \eps \Leftrightarrow 2|\frac{1 - \sqrt[3]{1 + \frac{2}{n} - \frac{1}{n^2}} + 1 - \sqrt[3]{1 - \frac{1}{n^2}} + 1 - \sqrt[3]{1 - \frac{2}{n} - \frac{1}{n^2}}}{3(\sqrt[3]{1 + \frac{2}{n} - \frac{1}{n^2}} + \sqrt[3]{1 - \frac{1}{n^2}} + \sqrt[3]{1 - \frac{2}{n} - \frac{1}{n^2}})}| < \eps$.
         С $n > 10$ точно выполняется, что знаменатель > 1, поэтому:
         $\ 2|\frac{1 - \sqrt[3]{1 + \frac{2}{n} - \frac{1}{n^2}} + 1 - \sqrt[3]{1 - \frac{1}{n^2}} + 1 - \sqrt[3]{1 - \frac{2}{n} - \frac{1}{n^2}}}{3(\sqrt[3]{1 + \frac{2}{n} - \frac{1}{n^2}} + \sqrt[3]{1 - \frac{1}{n^2}} + \sqrt[3]{1 - \frac{2}{n} - \frac{1}{n^2}})}| \le
         2|1 - \sqrt[3]{1 + \frac{2}{n} - \frac{1}{n^2}} + 1 - \sqrt[3]{1 - \frac{1}{n^2}} + 1 - \sqrt[3]{1 - \frac{2}{n} - \frac{1}{n^2}}| \le
         2|3 - \sqrt[3]{1 + \frac{2}{n} - \frac{1}{n^2}}| \le 2|3 - \sqrt[3]{1 + \frac{2}{n} -\frac{1}{n^2}}| \le
         2|3 + \sqrt[3]{\frac{1}{n^2}}|$. $2|3 + \sqrt[3]{\frac{1}{n^2}}| < \eps \Leftrightarrow
         3 + \sqrt[3]{\frac{1}{n^2}} < \frac{\eps}{2} \Leftrightarrow \frac{1}{n^2} < (\frac{\eps}{2} - 3)^3$. При $\eps \ge \frac{3}{2}$ можно брать $n = 10$ и все будет хорошо. Дальше рассматриваем $\eps < \frac{3}{2}$
-        \item (4) $x_n = \frac{(n-1)(n-2)\cdot\dots\cdot (n-10)}{(n+1)(n+2)\cdot\dots\cdot(n+10)}$
+        \item (4) $x_n = \frac{(n-1)(n-2)\cdot\dots\cdot (n-10)}{(n+1)(n+2)\cdot\dots\cdot(n+10)}$\\
+        Предел равен 1.\\
+        $|\frac{(n-1)\cdots(n-10) - (n+1)\cdots(n+10)}{(n+1)\cdots(n+10)}| = \frac{(n+1)\cdots(n+10) - (n-1)\cdots(n-10)}{(n+1)\cdots(n+10)} \le \frac{(n+10)^{10} - (n-10)^{10}}{(n+1)^{10}}$ -- точно верно для $n > 10$\\
+        $\frac{(n+10)^{10} - (n-10)^{10}}{(n+1)^{10}} = \frac{20((n+10)^9 + \cdots + (n-10)^9)}{(n+1)^{10}} \le \frac{20((n+10)^9 + \cdots + (n-10)^9)}{n^{10}}$\\
+        $\frac{20((n+10)^9 + \cdots + (n-10)^9)}{n^{10}} = \frac{20(n+10)^9}{n^{10}} + \cdots + \frac{20(n-10)^9}{n^{10}} \le \frac{200(n+10)^9}{n^{10}}$\\
+        $\frac{200(n+10)^9}{n^{10}} \le \frac{200\cdot 252 \cdot 10 \cdot n^9}{n^{10}}$\ Наибольший биноминальный коэф-т равен 252, поэтому это верно.\\
+        Тогда $N(\eps) = \max(11, \frac{200\cdot 252 \cdot 10}{\eps})$    
     \end{enumerate}
     
 	\item При каких из нижеперечисленных условий числовая последовательность $x_n$ сходится?
@@ -116,18 +126,41 @@
 	    \item (3) $\forall \eps>0\ \exists N:\ \forall n>N\ \left|\frac{x_1+x_2+\dots + x_n}{n}\right|\leq \eps$\\
 	    Решение: $x_n = 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0 \dots$ модуль среднего арифметического стремится к нулю, но сама она не сходится.
 	    \item (3) $\forall \eps>0\ \exists N:\ \forall n>N\ x_n^2<\frac{1}{1+\eps}$\\
-	    Решение: $\eps' = \frac{1}{1+\eps}$. $x_n^2 < \eps' \Leftrightarrow |x_n| < \sqrt{\eps'} \Rightarrow x_n$ сходится к 0, так как $\sqrt{\eps'}$ может быть любым положительным числом.
-	    \item (3) $\forall\eps>0\ \exists N>0:\ \forall n>N\ 0<x_n^n\leq \frac{\eps}{n}$
-	    \item (3) $\exists N:\ \forall n>0\ \frac{1}{n}\leq (x_n - 1)^n \leq n$
+        Решение: $\eps' = \frac{1}{1+\eps}$. $x_n^2 < \eps' \Leftrightarrow |x_n| < \sqrt{\eps'} \Rightarrow x_n$ сходится к 0, так как $\sqrt{\eps'}$ может быть любым положительным числом.
+        \item (3) $\forall\eps>0\ \exists N>0:\ \forall n>N\ 0<x_n^n\leq \frac{\eps}{n}$\\
+	    Решение: $\forall\eps>0\ \exists N>0:\ \forall n>N\ 0<x_n^n\leq \frac{\eps}{n} \Rightarrow 0<x_n \leq \sqrt[n]{\frac{\eps}{n}}$.\\
+	    Заметим: $\frac{1}{\sqrt[n]{n}} = (\sqrt[n]{n})^{-1}, \sqrt[n]{n} \rightarrow 1 \Rightarrow \frac{1}{\sqrt[n]{n}} \rightarrow 1$
+        \item (3) $\exists N:\ \forall n>0\ \frac{1}{n}\leq (x_n - 1)^n \leq n$\\
+        Решение: $\frac{1}{n}\leq (x_n - 1)^n \leq n \Leftrightarrow \frac{1}{\sqrt[n]{n}} \le x_n - 1 \le \sqrt[n]{n}$. Левая и правая части стремятся к 1. По т. о двух миллиционерах предел есть и равен 2.
 	\end{enumerate}
     
     \item Докажите, что последовательность $x_n$ сходится, и вычислите ее предел, если
     \begin{enumerate}
-        \item (7) $x_1=1,\quad x_{n+1}=\frac{x_n + 1}{x_n + 2}$
+        \item (7) $x_1=1,\quad x_{n+1}=\frac{x_n + 1}{x_n + 2}$\\
+        Решение:\\ 
+        Заметим, что $x_n > 0$. Найдем, когда убывает\\
+        $x_n > \frac{x_n + 1}{x_n + 2} \Leftrightarrow x_n^2 + 2x_n > x_n + 1 \Leftrightarrow x_n^2 + x_n - 1 > 0$\\
+        Заметим, что пока $x_n > \frac{\sqrt{5} - 1}{2}$, $x_n$ убывает.\\
+        Найдем, когда $x_{n+1} \le \frac{\sqrt{5} - 1}{2}$\\
+        $\frac{x_n + 1}{x_n + 2} \le \frac{\sqrt{5} - 1}{2} \Leftrightarrow 2x_n + 2 \le \sqrt{5}x_n - x_n + 2\sqrt{5} - 2 \Leftrightarrow x_n(3 - \sqrt{5}) \le 2\sqrt{5} - 4 \Leftrightarrow x_n \le \frac{2\sqrt{5} - 4}{3 - \sqrt{5}}$\\
+        Сравним теперь это с $\frac{\sqrt{5} - 1}{2}$\\
+        $\frac{\sqrt{5} - 1}{2} - \frac{2\sqrt{5} - 4}{3 - \sqrt{5}} = \frac{3\sqrt{5} - 3 - 5 + \sqrt{5} - 4\sqrt{5} + 8}{2(3 - \sqrt{5})} = 0$.\\
+        Получается, что $x_{n+1} \le \frac{\sqrt{5} - 1}{2}$ только, если $x_{n} \le \frac{\sqrt{5} - 1}{2}$.\\
+        $1 > \frac{\sqrt{5} - 1}{2}, x_n$ ограничена снизу. Значит, она сходится. Тогда пусть $x_n \rightarrow a$.\\
+        $a = \frac{a+1}{a+2} \Rightarrow a = \frac{\sqrt{5} - 1}{2}$.\\
+        Предел равен $\frac{\sqrt{5} - 1}{2}$
         \item (10) $x_1 = 2,\ x_2 = 1,\quad x_{n+2} = \sqrt[3]{x_{n+1}^2x_n}$\\
         Решение:\\
-        $\frac{x_{n+3}}{x_{n+2}}=\frac{\sqrt[3]{x_{n+2}^2x_{n+1}}}{x_{n+2}}=\sqrt[3]{\frac{x_{n+1}}{x_{n+2}}} \Rightarrow \frac{x_{n+3}}{x_{n+2}} = \sqrt[9]{\frac{x_{n+1}}{x_n}} \Rightarrow \frac{x_{n+4}}{x_{n+3}} = \sqrt[9]{\frac{x_{n+2}}{x_{n+1}}} \Rightarrow \frac{x_{n+4}}{x_{n+2}} = \sqrt[9]{\frac{x_{n+2}}{x_{n}}}$\\
-        $d = \frac{x_{n+2}}{x_{n}} \Rightarrow x_{2n+1} = d^{\sum_{i=0}^n\frac{1}{9^n}}x_1$
+        $\frac{x_{n+3}}{x_{n+2}} = \frac{\sqrt[3]{x_{n+2}^2x_{n+1}}}{x_{n+2}} =
+        \sqrt[3]{\frac{x_{n+1}}{x_{n+2}}} \Rightarrow \frac{x_{n+3}}{x_{n+2}} =
+        \sqrt[9]{\frac{x_{n+1}}{x_n}} \Rightarrow \frac{x_{n+4}}{x_{n+3}} = 
+        \sqrt[9]{\frac{x_{n+2}}{x_{n+1}}} \Rightarrow \frac{x_{n+4}}{x_{n+2}} = 
+        \sqrt[9]{\frac{x_{n+2}}{x_{n}}}$\\
+        Аналогично: $\frac{x_{n+5}}{x_{n+3}} = \sqrt[9]{\frac{x_{n+3}}{x_{n+1}}}$\\
+        Тогда: $x_5=x_3\cdot \frac{x_5}{x_3} = x_3 \sqrt[9]{\frac{x_3}{x_1}}$, $x_7=x_5\cdot \frac{x_7}{x_5} = x_5 \sqrt[9]{\frac{x_5}{x_3}} = x_5 \sqrt[81]{\frac{x_3}{x_1}} = x_3 \sqrt[9]{\frac{x_3}{x_1}}\sqrt[81]{\frac{x_3}{x_1}}$ и тд.\\
+        По аналогии: $x_{2n+1} = x_3(\frac{x_3}{x_1})^{\sum_{k=1}^{n-1} \frac{1}{9^k}}$. $n_{+\infty} = x_3(\frac{x_3}{x_1})^\frac{1}{8}$ и также $x_{2n} = x_4(\frac{x_4}{x_2})^{\sum_{k=1}^{n-2}\frac{1}{9^k}} \Rightarrow x_{+\infty} = x_4(\frac{x_4}{x_2})^{\frac{1}{8}}$\\
+        $x_3 = \sqrt[3]{2}, \frac{x_3}{x_1} = 2^{-\frac{2}{3}}, x_4 = \sqrt[3]{4^{\frac{1}{3}}} = 2^{\frac{2}{9}}, \frac{x_4}{x_2} = 2^{\frac{2}{9}}.$\\
+        $2^{\frac{1}{3}}\cdot 2^{-\frac{2\cdot 1}{3\cdot 8}} = 2^{\frac{1}{3}}\cdot 2^{-\frac{1}{12}} = 2^{\frac{1}{4}} = 2^{\frac{2\cdot 9}{9\cdot 8}} = 2^{\frac{2}{9}(1 + \frac{1}{8})} = 2^\frac{2}{9}\cdot 2^{\frac{2\cdot 1}{9\cdot 8}} \Rightarrow$ пределы последовательностей из четных и нечетных $x_n$ совпадают $\Rightarrow x_n$ сходится и имеет предел $2^\frac{1}{4}$. 
     \end{enumerate}
     
     \item (10) При каких $x_1\in\mathbb{R}$ последовательность, заданная рекуррентно $x_{n+1}=x_n(2-x_n)$, $n\geqslant1$, сходится? Если сходится, найдите предел.

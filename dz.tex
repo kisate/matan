@@ -129,7 +129,10 @@
         Решение: $\eps' = \frac{1}{1+\eps}$. $x_n^2 < \eps' \Leftrightarrow |x_n| < \sqrt{\eps'} \Rightarrow x_n$ сходится к 0, так как $\sqrt{\eps'}$ может быть любым положительным числом.
         \item (3) $\forall\eps>0\ \exists N>0:\ \forall n>N\ 0<x_n^n\leq \frac{\eps}{n}$\\
 	    Решение: $\forall\eps>0\ \exists N>0:\ \forall n>N\ 0<x_n^n\leq \frac{\eps}{n} \Rightarrow 0<x_n \leq \sqrt[n]{\frac{\eps}{n}}$.\\
-	    Заметим: $\frac{1}{\sqrt[n]{n}} = (\sqrt[n]{n})^{-1}, \sqrt[n]{n} \rightarrow 1 \Rightarrow \frac{1}{\sqrt[n]{n}} \rightarrow 1$
+        Заметим: $\frac{1}{\sqrt[n]{n}} = (\sqrt[n]{n})^{-1}, \sqrt[n]{n} \rightarrow 1 \Rightarrow \frac{1}{\sqrt[n]{n}} \rightarrow 1$\\
+        Докажем, что полученная последовательность стремится к 1.\\
+        $\forall \eps > 0\ {\sqrt[n]{\frac{\eps}{n}}} = \sqrt[n]{\eps}\cdot \sqrt[n]{\frac{1}{n}}$. Для $\eps < 1$ верно: $\sqrt[n]{\eps}\cdot \sqrt[n]{\frac{1}{n}} \rightarrow 1\cdot 1 = 1$. При этом $\sqrt[n]{\frac{\eps}{n}} < 1$.\\
+        Пусть у нас $\eps$ фиксированный и $< 1$. Тогда у нас $|1 - x_n| < |1 - \sqrt[n]{\frac{\eps}{n}}| = 1 - \sqrt[n]{\frac{\eps}{n}} \rightarrow 0$. Тогда для $\forall \eps' > 0\ \exists N:\ n > N\ |1 - x_n| < \eps'$. Тогда $x_n \rightarrow 1$.
         \item (3) $\exists N:\ \forall n>0\ \frac{1}{n}\leq (x_n - 1)^n \leq n$\\
         Решение: $\frac{1}{n}\leq (x_n - 1)^n \leq n \Leftrightarrow \frac{1}{\sqrt[n]{n}} \le x_n - 1 \le \sqrt[n]{n}$. Левая и правая части стремятся к 1. По т. о двух миллиционерах предел есть и равен 2.
 	\end{enumerate}

@@ -3,6 +3,7 @@
 
 
 
+\usepackage{forloop}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -19,10 +20,12 @@
 %\renewcommand{\labelenumii}{\arabic{enumii}.}
 
 \usepackage{import}
+\usepackage{comment}
 
 
 \newtheorem*{rem}{Remark}
 \newtheorem{lemma}{Lemma}
+\usepackage{forloop}
 \newtheorem{cor}{Corollary}
 
 \def\Im{\mathrm{Im}\,}
@@ -41,101 +44,79 @@
 \def\vphi{\varphi}
 
 \def\pr{\partial}
+\def\Int{\mathrm{Int}}
+\def\Cl{\mathrm{Cl}}
 
+%beta-function
+\def\B{\mathrm{B}}
 
 \begin{document}
 
-\newcommand\HeaderDZ[1]{
-\begin{center}
-		\textbf{Подготовка к КР#1.}
-\end{center}
-\vspace{-\baselineskip}
-\bigskip
-\bigskip
-}
 
 
 
 \renewcommand{\labelenumii}{\arabic{enumii})}
 \renewcommand{\labelenumiii}{\roman{enumiii})}
 
-\HeaderDZ{1}
+
+
 
 \begin{enumerate}
-    \item $A = \{x \in [0, 1]\mid\ x = 0,a_1a_2a_3\cdots, a_i\cdot i = 0 \mod 10\}$\\
-    Элементы $A$ -- это вещественные числа от 0 до 1, у которых каждая четная цифра либо 0, либо 5, каждая пятая должна быть четной, а каждая десятая -- любой. Все остальные -- 0.\\
-    $\inf A = 0$, так как 0 получается просто, когда все $a_i$ равны 0, а чисел меньше нуля в $A$ нет.\\
-    $\sup A = 0,(0505805059)$. Большего числа в $A$ нет, значит это супремум.\\
-    Рассмотрим $\eps > 0$. $\exists n\in \mathbb {N} :\ \eps' = 10^{-n} < \eps$\\
-    Тогда $\eps'$-окрестность любого числа лежит в $\eps$-окрестности этого числа. И тогда все цифры, начиная с $n+1$, можно менять как угодно, а число все равно останется в $\eps$-окрестности.\\
-    $\Int A = \varnothing$, так как по соображению выше в любой окрестности $a \in A$ будет число, у которого на каком-то четном месте стоит не 0, а 1, и такое число не будет лежать в $A$.\\
-    Так как у нас каждая десятая цифра может быть любой, то $A \subset A'$. Потому что все по тому же соображению мы можем поменять какую-то цифру на месте, кратном десяти и получить число из $A$, которое лежит в любой окрестности $a \in A$.\\
-    Теперь возьмем какое-то число не из $A$. Тогда у него есть хотя бы одна неправильная цифра. Пускай она под номером $n$. Тогда в любой $\eps$-окрестности этого числа, если $\eps < 10^{-(n+2)}$, все числа будут отличаться не больше, чем на $10^{-(n+2)}$, т.е. они будут отличаться только в цифрах, номер которых больше или равен $n+1$. Тогда у них всегда будет неправильная цифра на $n$-ом месте, а значит они все не будут лежать в $A$. Тогда $A' = A$.\\
-    Тогда и $\Cl A = A$ и $\partial A = A$.
-
-    \item $x_1 = a$, $x_{n+1} = x_n^2 + \frac{x_n}{2}$.\\
-    Рассмотрим, когда убывает/возрастает.\\
-    $x_n < x_n^2 + \frac{x_n}{2} \Leftrightarrow 2x_n^2 - x_n > 0 \Leftrightarrow x_n(x_n - \frac{1}{2}) > 0$.\\
-    $x_n^2 + \frac{x_n}{2} > 0 \Leftrightarrow x_n(x_n + \frac{1}{2}) > 0$.\\
-    $x_n^2 + \frac{x_n}{2} > \frac{1}{2} \Leftrightarrow 2x_n^2 + x_n - 1 > 0 \Leftrightarrow (x_n + 1)(x_n - \frac{1}{2}) > 0$.\\
-    Если $x_n > \frac{1}{2}$, то $x_{n+1} > x_n$. $\frac{x_n^2 + \frac{x_n}{2}}{x_n} = x_n + \frac{1}{2}$, т.е. $\{x_n\} \rightarrow +\infty$. \\
-    Т.е. при $a > \frac{1}{2}$ предел равен $+\infty$.\\
-    Если $x_n \in (0, \frac{1}{2})$, то $x_{n+1} < x_n$, но при этом $x_{n+1} > 0$. Тогда ${x_n}$ монотонна и ограничена $\Rightarrow$ есть предел. Пускай он равен $b$. $b = b^2 + \frac{b}{2}$, подходит только $b=0$. \\
-    Получется, что при $a \in (0, \frac{1}{2})$ предел равен 0.\\
-    Если $x_n \in (-\frac{1}{2}, 0)$, то $x_{n+1} > x_n$, но $x_{n+1} < 0$. Значит последовательность монотонна и ограничена, поэтмому есть предел. Из $b = b^2 + \frac{b}{2}$ следует, что предел равен 0.\\ Т.е. при $a \in (-\frac{1}{2}, 0)$ $\{x_n\} \rightarrow 0$.\\
-    Если $x_n \in (-1, -\frac{1}{2})$, то $x_{n+1} > x_n$. $x_{n+1} > 0$ и $x_{n+1} < \frac{1}{2}$. Т.е. попадаем во второй случай.\\
-    Тогда при $a \in (-1, -\frac{1}{2})$ $\{x_n\}\rightarrow 0$.\\
-    Если $x_{n} < -1$, то $x_{n+1} > x_n$. $x_{n+1} > 0$ и $x_{n+1} > \frac{1}{2}$, т.е опять предел $+\infty$. \\
-    Тогда при $a < -1$ $\{x_n\}\rightarrow+\infty$.\\
-    $a = 0$, тогда $x_n = 0$, $\{x_n\}\rightarrow 0$.\\
-    $a = \frac{1}{2}$, тогда $x_n = \frac{1}{2}$. $\{x_n\}\rightarrow\frac{1}{2}$.\\
-    $a = -\frac{1}{2}$, $x_n = 0$. $\{x_n\}\rightarrow 0$.\\
-    $a = -1$, $x_2 = \frac{1}{2} \Rightarrow \{x_n\}\rightarrow\frac{1}{2}$.\\
-    Теперь $N(\eps)$.\\ 
-    $a = \frac{1}{2} + \alpha$, $\alpha > 0$:\\
-    $\frac{x_n+1}{x_n} = x_{n+1} + \frac{1}{2} \ge 1 + \alpha$.\\
-    $x_{n+1} = a\cdot (1+\alpha)^n \ge a\cdot(1 + n\alpha)$\\
-    Надо чтобы $x_{n} \ge \eps$, $\eps > 0$.\\
-    $\eps \le a\cdot(1 + n\alpha) \Leftrightarrow \eps - a \le an\alpha \Leftrightarrow n \ge \frac{\eps - a}{a\alpha}$.\\
-    Тогда $N(\eps) = \max(2, \frac{\eps - a}{a\alpha} + 1)$, если $a > \frac{1}{2}$.\\
-    При $a \in \{\frac{1}{2}, 0, -\frac{1}{2}, -1\}\ N(\eps) = 1$.\\
-    $a = -1 - \alpha,\ \alpha > 0:$\\
-    $x_{2} = a^2 + \frac{a}{2} = (1+\alpha)^2 - \frac{1+\alpha}{2} = 1 + 2\alpha + \alpha^2 - \frac{1}{2} - \frac{\alpha}{2} = \frac{1}{2} + \alpha^2 + \frac{3}{2}\alpha > \frac{1}{2} + \alpha$. Тогда $\frac{x_{n+1}}{x_n} = x_n + \frac{1}{2} > 1 + \alpha$. Тогда $x_{n+2} > x_2\cdot(1 + \alpha)^{n} \ge x_2(1 + n\alpha)$.\\
-    Хотим, чтобы $x_{n+2} > \eps > 0.$\\
-    $x_2(1+n\alpha) > \eps \Leftrightarrow n > \frac{\eps - x_2}{x_2n}$, где $x_2 = a^2 + \frac{a}{2}$.\\
-    Тогда $N(\eps) = \max(3, \frac{\eps - x_2}{x_2n} + 2)$\\
-    $a \in (0, \frac{1}{2}), a = \frac{1}{2} - \alpha, \alpha \in (0, \frac{1}{2})$:
-    $\frac{x_{n+1}}{x_n} = x_n + \frac{1}{2} \le 1 - \alpha$\\
-    $x_{n+1} \le a\cdot(1 - \alpha)^n$.\\
-    Так как $x_n > 0$, то нужно, чтобы $x_n < \eps$.\\
-    $a\cdot(1-\alpha)^n < \eps \Leftrightarrow n\log_a(a(1-a)) > \log_a\eps \Leftrightarrow n > \frac{\log_a\eps}{\log_a(a(1-a))}$\\
-    $N(\eps) = \max(2, \frac{\log_a\eps}{\log_a(a(1-a))})$.\\
-    Я хочу спать, поэтому скажу, что для остальных $a$ аналогично.
-
-    \item 
-    \begin{enumerate}
-        \item $\lim\limits_{n\rightarrow\infty}(\sqrt{\frac{1}{n}} + \cdots + \sqrt{\frac{n}{n}} - \frac{2n}{3}) = \lim\limits_{n\rightarrow\infty}(\frac{1 + \sqrt{2} + \cdots + \sqrt{n} - \frac{2n\sqrt{n}}{3}}{\sqrt{n}})$. $\sqrt{n}\rightarrow+\infty$.\\
-        $\lim\limits_{n\rightarrow\infty}(\frac{1 + \sqrt{2} + \cdots + \sqrt{n} - \frac{2n\sqrt{n}}{3}}{\sqrt{n}}) = \lim\limits_{n\rightarrow\infty}\frac{\sqrt{n+1} - \frac{2(n+1)\sqrt{n+1}}{3} + \frac{2n\sqrt{n}}{3}}{\sqrt{n+1} - \sqrt{n}} = \lim\limits_{n\rightarrow\infty}\frac{\frac{1}{3}\sqrt{n+1}-\frac{2n}{3}(\sqrt{n+1} - \sqrt{n})}{\sqrt{n+1}-\sqrt{n}}=$\\
-        $= \lim\limits_{n\rightarrow\infty}(\frac{\frac{1}{3}\sqrt{n+1}}{\sqrt{n+1}-\sqrt{n}} - \frac{2n}{3}) = \lim\limits_{n\rightarrow\infty}(\frac{\frac{1}{3}\sqrt{n+1}(\sqrt{n+1} + \sqrt{n})}{1} - \frac{2n}{3}) = \lim\limits_{n\rightarrow\infty}(\frac{1}{3}(n+1) + \frac{1}{3}\sqrt{n^2 + n} - \frac{2n}{3}) = $\\
-        $=\lim\limits_{n\rightarrow\infty}(\frac{1}{3}\sqrt{n^2 + n} - \frac{n}{3} + \frac{1}{3}) = \frac{1}{3}\lim\limits_{n\rightarrow\infty}(\frac{n^2 + n - n^2}{\sqrt{n^2 + n} + n} + 1) = \frac{1}{3}\cdot(\frac{1}{2} + 1) = \frac{1}{2}$ 
-        \item $\lim\limits_{n\rightarrow\infty}\frac{1}{n}\sum_{k=0}^{n-1}(1 + \frac{1}{n})^k = \lim\limits_{n\rightarrow\infty}\frac{1}{n}\sum_{k=0}^{n-1}(1+\frac{1}{n})^k = \lim\limits_{n\rightarrow\infty}(\frac{1}{n}\cdot \frac{(1 + \frac{1}{n})^n - 1}{\frac{1}{n}}) =\lim\limits_{n\rightarrow\infty}(1 + \frac{1}{n})^n - 1 =e - 1$
+    
+    \item В этом задании мы докажем, что 
+    \[
+        \sum\limits_{k = 1}^n \frac{1}{k} = \log n + \gamma + \frac{1}{2n} + o\left( \frac{1}{n} \right).
+    \]
+    Пререквизиты, которые нам понадобятся:
+    \begin{enumerate}[label=(\arabic*)]
+        \item Теорема Штольца,
+        \item наревенство $x-\frac{x^2}{2}\leq \log (1+x)\leq x$ (будет доказано на практике),
+        \item формула Тейлора для $\log(1+x)$ второго порядка, чтобы заменять $\log\left(1 + \frac{1}{n}\right)$ на более удобное выражение.
     \end{enumerate}
+    Заведем обозначение $H_n = \sum\limits_{k = 1}^n \frac{1}{k}$ для удобства.
+    \begin{enumerate}
+        \item (7) Найдите предел $\lim\limits_{n\to +\infty}\frac{H_n}{\log n}$
+        \item (10) Покажите, что последовательность $\{H_n - \log n\}$ сходится.
+        
+        \noindent\emph{Подсказка:} покажите, что последовательность $H_{n-1} - \log n$ монотонно возрастает, а последовательность $H_n - \log n$ монотонно убывает.
+        
+        \item (10) Пусть $\gamma:= \lim\limits_{n\to +\infty} (H_n - \log n)$. С помощью теоремы Штольца покажите, что
+        \[
+            \lim\limits_{n\to +\infty}n(H_n - \log n - \gamma) = \frac{1}{2}.
+        \]
+    \end{enumerate}
+    
+    \item Выпишите формулу Тейлора для функции $f$ в $0$ до порядка $n$, если
+    \begin{enumerate}
+        \item (5) $f(x) = \frac{1}{(x+1)(x-2)}$
+        \item (5) $f(x) = (x-1)e^{x/2}$
+        \item (5) $f(x) = \begin{cases}e^{-1/x^2},\quad x\neq 0,\\ 0,\quad x=0\end{cases}$
+    \end{enumerate}
+    
+    \item Найдите следующие пределы:
+    \begin{enumerate}
+        \item (5) $\lim\limits_{x\to 0}\frac{\log(x+\cos(x)) - x}{x^2}$\\
+        $\lim\limits_{x\to 0}\frac{\log(x+\cos(x)) - x}{x^2} = \lim\limits_{x\to 0}\frac{\log(x + 1 - \frac{x^2}{2} + \mathcal O(x^4)) - x}{x^2} = 
+        \lim\limits_{x\to 0}\frac{x + - \frac{x^2}{2} + \mathcal O(x^4) + \mathcal O((x - \frac{x^2}{2} + \mathcal O(x^4))^2) - x}{x^2} = \lim\limits_{x\to 0}\frac{- \frac{x^2}{2} + \mathcal O(x^4) + \mathcal O(x^8)}{x^2} =\\=-\frac{1}{2}$
+        \item (5) $\lim\limits_{x\to 0}\frac{\sqrt{1+x} + \sqrt[3]{1+x} - 2\sqrt[4]{1-x}}{x}$
+        \item (5) $\lim\limits_{x\to 0}\frac{\sqrt{1+x} - \sqrt[3]{1+x} - \sqrt[6]{1+x}}{x^2}$
+        \item (5) $\lim_{x\to 0}\frac{e^x - \sqrt{1 + 2x + 2x^2}}{x + \tg(x) - \sin (2x)}$
+        \item (5) $\lim\limits_{x\to 0}(\cos(x))^{\frac{1}{x^2}}$
+        \item (5) $\lim\limits_{x\to 1}\frac{\sin(\pi x)}{\log x}$
+        \item (5) $\lim\limits_{x\to 0}\frac{(1 + x)^{\frac{1}{x}} - e}{x}$
+        \item (5) $\lim\limits_{x\to 0}\frac{\ln (x+\sqrt{x^2+1})-x}{(e^x-e^{\sin x})}$
+        \item (7) $\lim\limits_{x\to 0}\frac{x\cdot e^{(e^x-1)}+1-\frac{1}{1-x}}{\sin^2(x)-x^2\cos^2(x)}$
+        \item (7) $\lim\limits_{x\to 0} \frac{e^x+\sin x - \cos x + 2\ln(1-x)}{x(\sqrt{1+2x}-\sqrt[3]{1+3x})}$
+    \end{enumerate}
+    
+    \item (7) Пусть $f:[0,1]\to \mathbb R$ --- непрерывная функция и $\max_{0\leq x\leq 1}\cos (f(x))=\frac{1}{2}$. Покажите, что для всякого $a\in \mathbb R$ уравнения $f(x) = a$ и $f(x) = a + 5$ не могут одновременно иметь решение.
+
+\item (7) Пусть $f:[0,1]\to \mathbb R$ --- непрерывная функция и $\max\limits_{0\leq x\leq 1}f(x)^3 = \max\limits_{0\leq x\leq 1}\exp(-f(x) + 1)$. Покажите, что уравнение $f(x) = 1$ имеет решение.
+
+\item (7) Пусть  $f:[0,1]\to \mathbb R$ --- непрерывная функция, $f(0)\neq f(1)$ и $f$ принимает каждое свое значение не больше трех раз. Докажите, что некоторое значение принимается функцией $f$ нечетное количество раз.
+    
+    
+    
 \end{enumerate}
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

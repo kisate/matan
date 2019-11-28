@@ -97,16 +97,31 @@
     \begin{enumerate}
         \item (5) $\lim\limits_{x\to 0}\frac{\log(x+\cos(x)) - x}{x^2}$\\
         $\lim\limits_{x\to 0}\frac{\log(x+\cos(x)) - x}{x^2} = \lim\limits_{x\to 0}\frac{\log(x + 1 - \frac{x^2}{2} + \mathcal O(x^4)) - x}{x^2} = 
-        \lim\limits_{x\to 0}\frac{x + - \frac{x^2}{2} + \mathcal O(x^4) + \mathcal O((x - \frac{x^2}{2} + \mathcal O(x^4))^2) - x}{x^2} = \lim\limits_{x\to 0}\frac{- \frac{x^2}{2} + \mathcal O(x^4) + \mathcal O(x^8)}{x^2} =\\=-\frac{1}{2}$
-        \item (5) $\lim\limits_{x\to 0}\frac{\sqrt{1+x} + \sqrt[3]{1+x} - 2\sqrt[4]{1-x}}{x}$
+        \lim\limits_{x\to 0}\frac{x - \frac{x^2}{2} + \mathcal O(x^4) + \frac{(x - \frac{x^2}{2} + \mathcal O(x^4))^2}{2} + \mathcal O((x - \frac{x^2}{2} + \mathcal O(x^4))^3) - x}{x^2} =\\= \lim\limits_{x\to 0}\frac{- \frac{x^2}{2} - \frac{x^2}{2} + \mathcal O(x^3)}{x^2} = -1$
+        \item (5) $\lim\limits_{x\to 0}\frac{\sqrt{1+x} + \sqrt[3]{1+x} - 2\sqrt[4]{1-x}}{x}$\\
+        $\lim\limits_{x\to 0}\frac{\sqrt{1+x} + \sqrt[3]{1+x} - 2\sqrt[4]{1-x}}{x} = \lim\limits_{x\to 0}\frac{1 + \frac{x}{2} + \mathcal O(x^2) + 1 + \frac{x}{3} + \mathcal O(x^2) - 2 + \frac{x}{2} + \mathcal O(x^2)}{x} = \frac{4}{3}$ 
         \item (5) $\lim\limits_{x\to 0}\frac{\sqrt{1+x} - \sqrt[3]{1+x} - \sqrt[6]{1+x}}{x^2}$
         \item (5) $\lim_{x\to 0}\frac{e^x - \sqrt{1 + 2x + 2x^2}}{x + \tg(x) - \sin (2x)}$
-        \item (5) $\lim\limits_{x\to 0}(\cos(x))^{\frac{1}{x^2}}$
-        \item (5) $\lim\limits_{x\to 1}\frac{\sin(\pi x)}{\log x}$
-        \item (5) $\lim\limits_{x\to 0}\frac{(1 + x)^{\frac{1}{x}} - e}{x}$
-        \item (5) $\lim\limits_{x\to 0}\frac{\ln (x+\sqrt{x^2+1})-x}{(e^x-e^{\sin x})}$
+        \item (5) $\lim\limits_{x\to 0}(\cos(x))^{\frac{1}{x^2}}$\\
+        $\lim\limits_{x\to 0}(\cos(x))^{\frac{1}{x^2}} = \lim\limits_{x\to 0}(e^{\frac{1}{x^2}\ln cosx}) = \lim\limits_{x\to 0}(e^{\frac{1}{x^2}\ln (1 - \frac{x^2}{2} + \mathcal O(x^4))}) = \lim\limits_{x\to 0}(e^{\frac{1}{x^2}(-\frac{x^2}{2} + \mathcal O(x^4))}) = e^{-\frac{1}{2}}$
+        \item (5) $\lim\limits_{x\to 1}\frac{\sin(\pi x)}{\log x}$\\
+        $x = y + 1$\\
+        $\lim\limits_{x\to 1}\frac{\sin(\pi x)}{\log x} = \lim\limits_{y\to 0}\frac{\sin(\pi y + \pi)}{\log (y + 1)} = \lim\limits_{y\to 0} \frac{0 - \pi y + \mathcal O(y^3)}{y} = -\pi$
+        \item (5) $\lim\limits_{x\to 0}\frac{(1 + x)^{\frac{1}{x}} - e}{x}$\\
+        $\lim\limits_{x\to 0}\frac{(1 + x)^{\frac{1}{x}} - e}{x}$ = $\lim\limits_{x\to 0}\frac{e^{\frac{1}{x}\ln(1 + x)} - e}{x}$ = $\lim\limits_{x\to 0}\frac{e^{\frac{1}{x}(x - \frac{x^2}{2} + \mathcal O(x^3))} - e}{x}$ = $\lim\limits_{x\to 0}\frac{e\cdot e^\frac{-x}{2}\cdot e^{\mathcal O(x^2)} - e}{x}$ = $e\lim\limits_{x\to 0}\frac{e^\frac{-x}{2}\cdot e^{\mathcal O(x^2)} - 1}{x}$ =\\= $e\lim\limits_{x\to 0}\frac{(1 - \frac{x}{2} + \mathcal O(x^2))\cdot (1 + \mathcal O(x^2)) - 1}{x}$ = $e\lim\limits_{x\to 0}\frac{1 - \frac{x}{2} + \mathcal O(x^2) + \mathcal O(x^2) + \mathcal O(x^3) + \mathcal O(x^4) - 1}{x}$ = $e\lim\limits_{x\to 0}\frac{-\frac{x}{2} + \mathcal O(x^2)}{x}$ = $-\frac{e}{2}$
+        \item (5) $\lim\limits_{x\to 0}\frac{\ln (x+\sqrt{x^2+1})-x}{(e^x-e^{\sin x})}$\\
+        $\lim\limits_{x\to 0}\frac{\ln (x+\sqrt{x^2+1})-x}{(e^x-e^{\sin x})}$ = 
+        $\lim\limits_{x\to 0}\frac{\ln (x + 1 + \frac{x^2}{2} + \mathcal O(x^4))-x}{(1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \mathcal O(x^4) - (1 + x + \frac{x^2}{2} + \mathcal O(x^4)))}$ =\\=
+         $\lim\limits_{x\to 0}\frac{x + \frac{x^2}{2} + \mathcal O(x^4)  - \frac{(x + \frac{x^2}{2} + \mathcal O(x^4))^2}{2} + \frac{(x + \mathcal O(x^2))^3}{3} + \mathcal O(x^4)-x}{\frac{x^3}{6} + \mathcal O(x^4)}$ =\\=
+         $\lim\limits_{x\to 0}\frac{\frac{x^2}{2} + \mathcal O(x^4)  - \frac{x^2 + x^3 + \mathcal O(x^4)}{2} + \frac{x^3 + \mathcal O(x^4)}{3} + \mathcal O(x^4)}{\frac{x^3}{6} + \mathcal O(x^4)}$ = 
+         $\lim\limits_{x\to 0}\frac{-\frac{x^3}{2} + \frac{x^3}{3} + \mathcal O(x^4)}{\frac{x^3}{6} + \mathcal O(x^4)}$ = 
+         $\lim\limits_{x\to 0}\frac{-\frac{1}{2} + \frac{1}{3} + \mathcal O(x)}{\frac{1}{6} + \mathcal O(x)}$ = 
+         $-3 + 2$ = $-1$
         \item (7) $\lim\limits_{x\to 0}\frac{x\cdot e^{(e^x-1)}+1-\frac{1}{1-x}}{\sin^2(x)-x^2\cos^2(x)}$
-        \item (7) $\lim\limits_{x\to 0} \frac{e^x+\sin x - \cos x + 2\ln(1-x)}{x(\sqrt{1+2x}-\sqrt[3]{1+3x})}$
+        \item (7) $\lim\limits_{x\to 0} \frac{e^x+\sin x - \cos x + 2\ln(1-x)}{x(\sqrt{1+2x}-\sqrt[3]{1+3x})}$\\
+        $\lim\limits_{x\to 0} \frac{e^x+\sin x - \cos x + 2\ln(1-x)}{x(\sqrt{1+2x}-\sqrt[3]{1+3x})}$ = $\lim\limits_{x\to 0} \frac{1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \mathcal O(x^4) + x - \frac{x^3}{6} + \mathcal O(x^5) - 1 + \frac{x^2}{2} + \mathcal O(x^4) + 2(-x - \frac{x^2}{2} + \frac{x^3}{3} + \mathcal O(x^4))}{x(1 + x - \frac{(2x)^2}{8} + \mathcal O(x^3) - (1 + x + \mathcal O(x^2))}$ =\\=
+         $\lim\limits_{x\to 0} \frac{2(- \frac{x^2}{2} + \frac{x^3}{3}) + \mathcal O(x^4) }{x(\frac{2}{3}x + \mathcal O(x^2))}$ = 
+         $2\lim\limits_{x\to 0} \frac{(- \frac{1}{2} + \frac{x}{3}) + \mathcal O(x^4) }{\frac{2}{3} + \mathcal O(x)}$ = $-\frac{3}{2}$
     \end{enumerate}
     
     \item (7) Пусть $f:[0,1]\to \mathbb R$ --- непрерывная функция и $\max_{0\leq x\leq 1}\cos (f(x))=\frac{1}{2}$. Покажите, что для всякого $a\in \mathbb R$ уравнения $f(x) = a$ и $f(x) = a + 5$ не могут одновременно иметь решение.
